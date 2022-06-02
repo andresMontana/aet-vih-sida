@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="Luc Anselin" />
+
+
+<title>AET – Conteo de casos</title>
+
+<script src="files/header-attrs-2.3/header-attrs.js"></script>
+<link href="files/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="files/highlightjs-9.12.0/highlight.js"></script>
+    <title>GeoDa on Github</title>
+
+    <style>
+    	*{margin:0;padding:0;}
+	    .shadowfilter {
+	       -webkit-filter: drop-shadow(12px 12px 7px rgba(0,0,0,0.5));
+	        filter: url(shadow.svg#drop-shadow);
+	     }
+	     .intro1 { margin-left: -45px;}
+    </style>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="../../stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../../stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" href="../../stylesheets/simple-slideshow-styles.css">
+    <style>
+        ul {padding-left:30px;}
+        figcaption {
+        top: .70em;
+        left: .35em;
+        bottom: auto!important;
+        right: auto!important;
+        }
+    </style>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        h3.subtitle {
+            text-align: center;
+        }
+        h4.author {
+            text-align: center;
+            margin-top: 0px;
+        }
+        h4.date {
+            text-align: center;
+        }
+        p.caption {
+            font-size : 12px;
+        }
+    </style>
+    <style>
+        iframe {
+        border: 0px solid #eee;
+        width: 100%;
+        }
+        .output {
+            background: #eee;
+        }
+
+        .contenedor-mayor {
+            width: 100%;
+        }
+        .contenedor-toal {
+            position: center;
+        }
+        .div-mitad {
+            width: 50%;
+            float: left; 
+        }
+    </style>  
+
+<!-- Google Analytics -->
+<script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-72724100-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<!-- End Google Analytics -->
+<!-- Google Tag Manager -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-53RVF8"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-53RVF8');</script>
+<!-- End Google Tag Manager -->
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+  if (window.hljs) {
+    hljs.configure({languages: []});
+    hljs.initHighlightingOnLoad();
+    if (document.readyState && document.readyState === "complete") {
+      window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+    }
+  }
+</script>
+
+</head>
+
+<body>
+    <section class="page-header">
+        <h1 class="project-name">Análisis espacio temporal del VIH/SIDA</h1>
+        <h2 class="project-tagline">Capítulo VI</h2>
+        <!-- Botones -->
+        <a href="../../index.html" class="btn">Home</a>
+        <a href="../../cap5.html" class="btn">Capítulo V</a>
+        <a href="../../cap6.html" class="btn">Capítulo VI</a>
+        <a href="#" class="btn">Capítulo VII</a>
+        <a href="#" class="btn">Para público general</a>
+    </section>
+    
+    <section class="main-content">
+
+        <h1 class="title toc-ignore">Autocorrelación espacial Local</h1>
+        <p></p>
+        <br/>
+
+        <div id="lisa-moran" class="section level2 unnumbered contenedor-mayor" number="">
+            <h2>I de Moran Local</h2>
+            <p style="text-align:justify">
+                En el Mapa 21 <a href="#map:21a">a)</a> y <a href="#map:21a">b)</a> vemos el mapa LISA correspondiente para el 
+                <span class="math line">\(I\)</span> de Moran local de la variable de prevalencia del VIH/SIDA desde el 2012 hasta el 2018. 
+                Las leyendas definen los Clúster, en específico, la leyenda <strong><em>NS</em></strong> define aquellos polígonos para los 
+                cuales el <span class="math line">\(I\)</span> de Moran local no es significativo<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>  
+                mediante el método <strong>FDR</strong>.
+            </p>
+            <p style="text-align:justify">
+                Vemos que se generan dos cluster Alto-Alto (Rojo fuerte) separados, el de la parte Suroeste contiene tres barrios los cuales son 
+                <strong>Santo Domingo de Guzmán</strong>, <strong>Carrizal</strong> y <strong>La Sierrita</strong>; más a la derecha de este se 
+                encuentra el segundo grupo que está conformado por los barrios <strong>San Roque</strong>, <strong>Rebolo</strong>, <strong>Montes</strong>, 
+                <strong>Las Nieves</strong> y <strong>La Luz</strong>. 
+            </p>
+            <p style="text-align:justify">
+                Lo que da un total de 8 barrios cuya prevalencia de VIH es alta y la de sus vecinos también. Para el peso espacial tipo Torre, 
+                a excepción del barrio <strong>San Roque</strong>, el cluster Alto-Alto es igual.
+            </p>
+            <p style="text-align:justify">
+                El cluster Bajo-Bajo solo se presenta para el peso especial tipo Reina y está conformado por 3 barrios de la zona norte que no 
+                comparten fronteras los cuales son: <strong>Palmas del Rio</strong>, <strong>Villa Carolina</strong> y <strong>San Salvador</strong>.
+            </p>
+            <p style="text-align:justify">
+                Los barrios atípicos son aquellos que pertenecen a los cluster Bajo-Alto (que no se generaron en ninguno de los mapas) y 
+                Alto-Bajo los cuales son solo 2 y son los mismos para ambos pesos espaciales, estos son: <strong>Los Ángeles I</strong> y 
+                <strong>Paraíso</strong>. Los cuales están también separados espacialmente. 
+            </p>
+            <p style="text-align:justify">                
+                <div class="figure div-mitad" style="text-align: center"><span id="map:21a"></span>                    
+                    <p class="caption">a) LISA - Prevalencia VIH/SIDA - W Reina</p>
+                    <iframe id="inlineFrameExample" title="Inline Frame Example" width="600" height="520" src="map/I_lisa_Q.html"></iframe>                                     
+                </div>
+                <div class="figure div-mitad" style="text-align: center"><span id="map:21b"></span>
+                    <p class="caption">b) LISA - Prevalencia VIH/SIDA - W Torre</p>
+                    <iframe id="" title="Inline Frame Example" width="600" height="520" src="map/I_lisa_R.html"></iframe>
+                </div>
+            </p>
+            <p class="caption">Mapa 21. LISA para el I de Moran</p>
+            
+            <p style="text-align:justify">
+            </p>
+        </div>
+        <br/>
+        
+        <p>  
+        </p>
+       
+     
+        
+        <div class="footnotes">
+            <hr>
+                <ol>
+                    <li id="fn1">
+                        <p>
+                            <span class="math line">Pseudo \(P\ valores ≥ 0.00236\)</span>
+                            <a href="#fnref1" class="footnote-back">↩︎</a>
+                        </p>
+                    </li>
+                </ol>
+        </div>
+        <footer class="site-footer">
+            <span class="site-footer-owner">Este sitio es mantenido por <a href="https://github.com/andresMontana" target="_blank">Andres Montaña</a>.</span>
+        </footer>
+
+    </section>
+
+
+    <!-- code folding -->
+
+
+    <!-- dynamically load mathjax for compatibility with self-contained -->
+    <script>
+    (function () {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+        document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+    </script>
+
+</body>
+</html>

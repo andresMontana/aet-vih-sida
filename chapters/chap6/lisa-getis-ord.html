@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="Luc Anselin" />
+
+
+<title>AET – Conteo de casos</title>
+
+<script src="files/header-attrs-2.3/header-attrs.js"></script>
+<link href="files/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="files/highlightjs-9.12.0/highlight.js"></script>
+    <title>GeoDa on Github</title>
+
+    <style>
+    	*{margin:0;padding:0;}
+	    .shadowfilter {
+	       -webkit-filter: drop-shadow(12px 12px 7px rgba(0,0,0,0.5));
+	        filter: url(shadow.svg#drop-shadow);
+	     }
+	     .intro1 { margin-left: -45px;}
+    </style>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="../../stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../../stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" href="../../stylesheets/simple-slideshow-styles.css">
+    <style>
+        ul {padding-left:30px;}
+        figcaption {
+        top: .70em;
+        left: .35em;
+        bottom: auto!important;
+        right: auto!important;
+        }
+    </style>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        h3.subtitle {
+            text-align: center;
+        }
+        h4.author {
+            text-align: center;
+            margin-top: 0px;
+        }
+        h4.date {
+            text-align: center;
+        }
+        p.caption {
+            font-size : 12px;
+        }
+    </style>
+    <style>
+        iframe {
+        border: 0px solid #eee;
+        width: 100%;
+        }
+        .output {
+            background: #eee;
+        }
+
+        .contenedor-mayor {
+            width: 100%;
+        }
+        .contenedor-toal {
+            position: center;
+        }
+        .div-mitad {
+            width: 50%;
+            float: left; 
+        }
+    </style>  
+
+<!-- Google Analytics -->
+<script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-72724100-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<!-- End Google Analytics -->
+<!-- Google Tag Manager -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-53RVF8"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-53RVF8');</script>
+<!-- End Google Tag Manager -->
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+  if (window.hljs) {
+    hljs.configure({languages: []});
+    hljs.initHighlightingOnLoad();
+    if (document.readyState && document.readyState === "complete") {
+      window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+    }
+  }
+</script>
+
+</head>
+
+<body>
+    <section class="page-header">
+        <h1 class="project-name">Análisis espacio temporal del VIH/SIDA</h1>
+        <h2 class="project-tagline">Capítulo VI</h2>
+        <!-- Botones -->
+        <a href="../../index.html" class="btn">Home</a>
+        <a href="../../cap5.html" class="btn">Capítulo V</a>
+        <a href="../../cap6.html" class="btn">Capítulo VI</a>
+        <a href="#" class="btn">Capítulo VII</a>
+        <a href="#" class="btn">Para público general</a>
+    </section>
+    
+    <section class="main-content">
+
+        <h1 class="title toc-ignore">Autocorrelación espacial Local</h1>
+        <p></p>
+        <br/>
+
+        <div id="lisa-moran" class="section level2 unnumbered contenedor-mayor" number="">
+            <h2>G y G* de Getis-Ord local</h2>
+            <p style="text-align:justify">
+                En este apartado se muestran los resultados para el G y el G* de Getis-Ord en su versión local bajo los pesos de contigüidad y 
+                no se tiene en cuenta el peso espacial tipo umbral ya que como se muestra en el apartado 6.5.2.3 esta configuración no muestra 
+                una agrupación de valores altos o bajos clara para este estadístico en su versión global.                 
+            </p>
+            <p style="text-align:justify">
+                En el Mapa <a href="#map:23a">23</a> se muestra el LISA para el G y G* de Getis-Ord según los tipos de peso espacial Torre y Reina. 
+                No se observa diferencia entre el G y el G* bajo el mismo peso espacial.
+            </p>
+            <p style="text-align:justify">
+                Para el peso Reina se encuentran qué 176 barrios son no significativos<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>  
+                bajo el método <strong>FDR</strong> mientras que para el 
+                peso Torre 180 no son significativos<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> . 
+            </p>
+
+            <p style="text-align:justify">                
+                <div class="figure div-mitad" style="text-align: center"><span id="map:23a"></span>                    
+                    <p class="caption">a) LISA G  - Prevalencia VIH/SIDA - W Reina</p>
+                    <iframe id="inlineFrameExample" title="Inline Frame Example" width="600" height="520" src="map/g-lisa-Q.html"></iframe>                                     
+                </div>
+                <div class="figure div-mitad" style="text-align: center"><span id="map:23b"></span>
+                    <p class="caption">c) LISA G  - Prevalencia VIH/SIDA - W Torre</p>
+                    <iframe id="" title="Inline Frame Example" width="600" height="520" src="map/g-lisa-R.html"></iframe>
+                </div>
+            </p>
+            <p style="text-align:justify">                
+                <div class="figure div-mitad" style="text-align: center"><span id="map:23c"></span>                    
+                    <p class="caption">b) LISA G* - Prevalencia VIH/SIDA - W Reina</p>
+                    <iframe id="inlineFrameExample" title="Inline Frame Example" width="600" height="520" src="map/g-lisa-Q.html"></iframe>                                     
+                </div>
+                <div class="figure div-mitad" style="text-align: center"><span id="map:23d"></span>
+                    <p class="caption">b) LISA G* - Prevalencia VIH/SIDA - W Torre</p>
+                    <iframe id="" title="Inline Frame Example" width="600" height="520" src="map/g-lisa-R.html"></iframe>
+                </div>
+            </p>
+            <p class="caption">Mapa 23. LISA para el G y G* de Getis-Ord</p>            
+        </div>
+        <br/>
+
+        <p style="text-align:justify">
+            Para el peso tipo Reina y bajo ambos estadísticos se detectan 8 <strong>hot spot</strong>, este cluster está separado espacialmente en dos 
+            regiones, la primera está en la zona suroeste del mapa y está conformada por los barrios <strong>El Bosque</strong>, <strong>Santo Domingo De Guzmán</strong> 
+            y <strong>Carrizal</strong>; la segunda está en la zona sureste del mapa y la constituyen los barrios <strong>San Roque</strong>, <strong>Montes</strong>, 
+            <strong>Rebolo</strong>, <strong>Las Nieves</strong> y <strong>La Luz</strong>. A su vez se detectaron 5 <em>cold spot</em> los cuales muestran 
+            una mayor agrupación en la parte norte del mapa y lo constituyen los barrios <strong>Palmas del Rio</strong>, <strong>Villa Carolina</strong>, <strong>San Salvador</strong>, <strong>Paraíso</strong> y, en la parte centro-oeste, <strong>Los Ángeles I</strong>. 
+        </p>
+        <p style="text-align:justify">
+            Por su parte, para el peso tipo Torre los puntos calientes y fríos detectados son menos, en esencia esta configuración es una 
+            reducción de los <em>cluster</em> en su contra parte tipo reina ya que los barrios identificados se encuentran identificados en el peso reina. 
+            Los cluster de <em>hot spot</em> y <em>cold spot</em> no varían entre un estadístico y otro. Los <em>hot spot</em> son los mismos que su contraparte de peso 
+            Reina con la salvedad de que el <strong>barrio San Roque</strong> se marca como no significativo. Los <em>cold spot</em> presentan una disminución más marcada, 
+            pasando de 5 en el peso Reina a 2 en el peso Torre, los 3 barrios de menos y marcados como no significativos son <strong>Palmas de Rio</strong>, 
+            <strong>Villa Carolina</strong> y <strong>San Salvador</strong>.
+        </p>
+        
+        <div class="footnotes">
+            <hr>
+                <ol>
+                    <li id="fn1">
+                        <p>
+                            <span class="math line">Pseudo \(P\ valores ≥ 0.0033705\)</span>
+                            <a href="#fnref1" class="footnote-back">↩︎</a>
+                        </p>
+                    </li>
+                    <li id="fn2">
+                        <p>
+                            <span class="math line">Pseudo \(P\ valores ≥ 0.0023640\)</span>
+                            <a href="#fnref2" class="footnote-back">↩︎</a>
+                        </p>
+                    </li>
+                </ol>
+        </div>
+        <footer class="site-footer">
+            <span class="site-footer-owner">Este sitio es mantenido por <a href="https://github.com/andresMontana" target="_blank">Andres Montaña</a>.</span>
+        </footer>
+
+    </section>
+
+
+    <!-- code folding -->
+
+
+    <!-- dynamically load mathjax for compatibility with self-contained -->
+    <script>
+    (function () {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+        document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+    </script>
+
+</body>
+</html>
