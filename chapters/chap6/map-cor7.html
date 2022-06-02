@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="Luc Anselin" />
+
+
+<title>AET – Conteo de casos</title>
+
+<script src="files/header-attrs-2.3/header-attrs.js"></script>
+<link href="files/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="files/highlightjs-9.12.0/highlight.js"></script>
+    <title>GeoDa on Github</title>
+
+    <style>
+    	*{margin:0;padding:0;}
+	    .shadowfilter {
+	       -webkit-filter: drop-shadow(12px 12px 7px rgba(0,0,0,0.5));
+	        filter: url(shadow.svg#drop-shadow);
+	     }
+	     .intro1 { margin-left: -45px;}
+    </style>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="../../stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../../stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" href="../../stylesheets/simple-slideshow-styles.css">
+    <style>
+        ul {padding-left:30px;}
+        figcaption {
+        top: .70em;
+        left: .35em;
+        bottom: auto!important;
+        right: auto!important;
+        }
+    </style>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        h3.subtitle {
+            text-align: center;
+        }
+        h4.author {
+            text-align: center;
+            margin-top: 0px;
+        }
+        h4.date {
+            text-align: center;
+        }
+        p.caption {
+            font-size : 12px;
+        }
+    </style>
+    <style>
+        iframe {
+        border: 0px solid #eee;
+        width: 100%;
+        }
+        .output {
+            background: #eee;
+        }
+
+        .contenedor-mayor {
+            width: 100%;
+        }
+
+        .div-mitad {
+            width: 50%;
+            float: left; 
+        }
+    </style>  
+
+<!-- Google Analytics -->
+<script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-72724100-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<!-- End Google Analytics -->
+<!-- Google Tag Manager -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-53RVF8"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-53RVF8');</script>
+<!-- End Google Tag Manager -->
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+  if (window.hljs) {
+    hljs.configure({languages: []});
+    hljs.initHighlightingOnLoad();
+    if (document.readyState && document.readyState === "complete") {
+      window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+    }
+  }
+</script>
+
+</head>
+
+<body>
+    <section class="page-header">
+        <h1 class="project-name">Análisis espacio temporal del VIH/SIDA</h1>
+        <h2 class="project-tagline">Capítulo VI</h2>
+        <!-- Botones -->
+        <a href="../../index.html" class="btn">Home</a>
+        <a href="../../cap5.html" class="btn">Capítulo V</a>
+        <a href="#" class="btn">Capítulo VII</a>
+        <a href="#" class="btn">Para público general</a>
+    </section>
+    
+    <section class="main-content">
+
+        <h1 class="title toc-ignore">Tasas y/o proporciones</h1>
+        <h4 class="author">Tasa empírica de Bayes</h4>
+        <p></p>
+        <br/>
+        <div id="sankey" class="section level2 unnumbered contenedor-mayor" number="">
+            <h2>Tasa empírica de Bayes</h2>
+            <p style="text-align:justify">
+                En este tópico se emplea la técnica de EBR por sus siglas en inglés (Empirical Bayes Rate). 
+                Empleando a su vez dos métodos diferentes para estimar el riesgo relativo o suavizar la tasa bruta estimada. 
+                Se emplearán sólo las estimaciones por el método de los momentos y el método ML, ya que el método Mixed ML genera 
+                las mismas clasificaciones y valores que el método de los mementos para nuestros datos, esto quizás se deba a la 
+                distribución subyacente de la población, tal como se explica en 
+                <span class="citation">(R. J. Marshall <a href="#ref-Marshall:91" role="doc-biblioref">1991</a>)</span>, o la raíz inicial tomada para el método 
+                Newton-Raphson.  
+            </p>            
+            <p>
+                <div class="figure div-mitad" style="text-align: center"><span id="fig:Map16"></span>
+                    <p class="caption">Tasa EB - mt 2012</p>
+                    <iframe id="inlineFrameExample" title="Inline Frame Example" width="600" height="520" src="map/choropleth07-01.html"></iframe>                                     
+                </div>
+                <div class="figure div-mitad" style="text-align: center"><span id="fig:Map16"></span>
+                    <p class="caption">Tasa EB - ml 2012</p>
+                    <iframe id="" title="Inline Frame Example" width="600" height="520" src="map/choropleth07-02.html"></iframe>                                     
+                </div>
+            </p>
+            <p>
+                <div class="figure div-mitad" style="text-align: center"><span id="fig:Map16"></span>
+                    <p class="caption">Tasa EB - mt 2014</p>
+                    <iframe id="inlineFrameExample" title="Inline Frame Example" width="600" height="520" src="map/choropleth07-03.html"></iframe>                                     
+                </div>
+                <div class="figure div-mitad" style="text-align: center"><span id="fig:Map16"></span>
+                    <p class="caption">Tasa EB - ml 2014</p>
+                    <iframe id="inlineFrameExample" title="Inline Frame Example" width="600" height="520" src="map/choropleth07-04.html"></iframe>                                     
+                </div>
+            </p>
+            <p>
+                <div class="figure div-mitad" style="text-align: center"><span id="fig:Map16"></span>
+                    <p class="caption">Tasa EB - mt 2016</p>
+                    <iframe id="inlineFrameExample" title="Inline Frame Example" width="600" height="520" src="map/choropleth07-05.html"></iframe>                                     
+                </div>
+                <div class="figure div-mitad" style="text-align: center"><span id="fig:Map16"></span>
+                    <p class="caption">Tasa EB - ml 2016</p>
+                    <iframe id="" title="Inline Frame Example" width="600" height="520" src="map/choropleth07-06.html"></iframe>                                     
+                </div>
+            </p>
+            <p>
+                <div class="figure div-mitad" style="text-align: center"><span id="fig:Map16"></span>
+                    <p class="caption">Tasa EB - mt 2018</p>
+                    <iframe id="inlineFrameExample" title="Inline Frame Example" width="600" height="520" src="map/choropleth07-07.html"></iframe>                                     
+                </div>
+                <div class="figure div-mitad" style="text-align: center"><span id="fig:Map16"></span>
+                    <p class="caption">Tasa EB - ml 2018</p>
+                    <iframe id="inlineFrameExample" title="Inline Frame Example" width="600" height="520" src="map/choropleth07-08.html"></iframe>                                     
+                </div>
+            </p>
+        </div>
+        <p class="caption">Mapa 16. Box Map comparativo para la tasa EB de la incidencia del VIH/SIDA, 2012-2018</p>
+
+        <br/>
+        <p style="text-align:justify">
+            En el Mapa <a href="#fig:Map16">16</a> se observa que para el año 2012 no se dieron variaciones entre un método y otro para el total de barrios en cada una 
+            de las seis clasificaciones, sin embargo, se observa una reclasificación espacial en los barrios. Se encerró en rojo la mayoría.
+        </p>
+        <p style="text-align:justify">
+            Para el año 2014 la categoría <span class="math line">\(“>75\%”\)</span> pasa de tener 32 a 33 en los métodos <strong>mt</strong> y <strong>ml</strong> respectivamente. 
+            La categoría “<em>Upper Outlier</em>” cuenta con un barrio menos en el método ml. También se dan unas reclasificaciones entre las categorías 
+            <span>\(“ &#60 25\%”\)</span>  y <span class="math line">\(“25\%-50\%”\)</span> pero sin alterar el conteo total de barrios que caen en dicha etiqueta.
+        </p>
+        <p>
+            En el año 2016 el método <strong>ml</strong> clasifica un barrio más como “crítico”, además de reclasificar a otro.
+        </p>
+        <p>
+            En el año 2018 el método <strong>ml</strong> clasifica un barrio menos como “crítico”, el cual pasa a la categoría <span class="math line">\(“>75\%”\)</span>. 
+        </p>
+        <div id="references" class="section level2 unnumbered" number="">
+            <h2>Referencias</h2>
+            <div id="refs" class="references hanging-indent">
+                <div id="ref-Marshall:91">
+                    <p>R. J. Marshall, “<em>Mapping Disease and Mortality Rates Using Empirical Bayes Estimators,</em>” <em>Appl. Stat</em>., vol. 40, no. 2, p. 283, 1991</p>
+                </div>
+            </div>
+        </div>
+
+        <footer class="site-footer">
+            <span class="site-footer-owner">Este sitio es mantenido por <a href="https://github.com/andresMontana" target="_blank">Andres Montaña</a>.</span>
+        </footer>
+
+    </section>
+
+
+    <!-- code folding -->
+
+
+    <!-- dynamically load mathjax for compatibility with self-contained -->
+    <script>
+    (function () {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+        document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+    </script>
+
+</body>
+</html>

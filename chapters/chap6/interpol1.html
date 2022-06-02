@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="Luc Anselin" />
+
+
+<title>AET – Conteo de casos</title>
+
+<script src="files/header-attrs-2.3/header-attrs.js"></script>
+<link href="files/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="files/highlightjs-9.12.0/highlight.js"></script>
+    <title>GeoDa on Github</title>
+
+    <style>
+    	*{margin:0;padding:0;}
+	    .shadowfilter {
+	       -webkit-filter: drop-shadow(12px 12px 7px rgba(0,0,0,0.5));
+	        filter: url(shadow.svg#drop-shadow);
+	     }
+	     .intro1 { margin-left: -45px;}
+    </style>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="../../stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../../stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" href="../../stylesheets/simple-slideshow-styles.css">
+    <style>
+        ul {padding-left:30px;}
+        figcaption {
+        top: .70em;
+        left: .35em;
+        bottom: auto!important;
+        right: auto!important;
+        }
+    </style>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        h3.subtitle {
+            text-align: center;
+        }
+        h4.author {
+            text-align: center;
+            margin-top: 0px;
+        }
+        h4.date {
+            text-align: center;
+        }
+        p.caption {
+            font-size : 12px;
+        }
+    </style>
+    <style>
+        iframe {
+        border: 0px solid #eee;
+        width: 100%;
+        }
+        .output {
+            background: #eee;
+        }
+
+        .contenedor-mayor {
+            width: 100%;
+        }
+        .contenedor-toal {
+            position: center;
+        }
+        .div-mitad {
+            width: 50%;
+            float: left; 
+        }
+    </style>  
+
+<!-- Google Analytics -->
+<script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-72724100-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<!-- End Google Analytics -->
+<!-- Google Tag Manager -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-53RVF8"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-53RVF8');</script>
+<!-- End Google Tag Manager -->
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+  if (window.hljs) {
+    hljs.configure({languages: []});
+    hljs.initHighlightingOnLoad();
+    if (document.readyState && document.readyState === "complete") {
+      window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+    }
+  }
+</script>
+
+</head>
+
+<body>
+    <section class="page-header">
+        <h1 class="project-name">Análisis espacio temporal del VIH/SIDA</h1>
+        <h2 class="project-tagline">Capítulo VI</h2>
+        <!-- Botones -->
+        <a href="../../index.html" class="btn">Home</a>
+        <a href="../../cap5.html" class="btn">Capítulo V</a>
+        <a href="../../cap6.html" class="btn">Capítulo VI</a>
+        <a href="#" class="btn">Capítulo VII</a>
+        <a href="#" class="btn">Para público general</a>
+    </section>
+    
+    <section class="main-content">
+
+        <h1 class="title toc-ignore">Interpolación espacial</h1>
+        <h4 class="author">IDW</h4>
+        <p></p>
+        <br/>
+        <div id="sankey" class="section level2 unnumbered contenedor-mayor" number="">
+            <h2>Ponderación de distancia inversa</h2>
+            <p style="text-align:justify">
+                En el Mapa <a href="#fig:Map19a">19 a)</a> se muestra una perspectiva <strong>3D</strong> arriba y una <strong>2D</strong> abajo 
+                para el resultado del IDW cuando se toma como entrada los polígonos enteros. La perspectiva <strong>3D</strong> muestra una superficie 
+                continua solo dentro de los polígonos. Es notorio como, de nuevo, se hace evidente los altos valores de la parte sur del mapa, con picos 
+                concentrados en la parte oeste del mapa. Por su parte, en la vista <strong>2D</strong> se muestra el resultado de la interpolación para 
+                aquellos lugares donde la incidencia es de cero (el resto de barrios no se muestran pues la interpolación se ejecutó para aquellos barrios 
+                que no presentan casos). En el Mapa <a href="#fig:Map19b">19 b)</a> se organiza de la misma manera, la perspectiva 
+                <strong>3D</strong> genera una trama continua en todo el <em>bounding box</em>, genera curvas más suaves, pero la tendencia es muy parecida 
+                a la perspectiva <a href="#fig:Map19a">a)</a>.
+            </p>          
+            <p style="text-align:justify">
+                <div class="figure div-mitad" style="text-align: center"><span id="fig:Map19a"></span>                    
+                    <iframe id="inlineFrameExample" title="Inline Frame Example" width="600" height="520" src="fig/idw_a.html"></iframe>                                     
+                </div>
+                <div class="figure div-mitad" style="text-align: center"><span id="fig:Map19b"></span>
+                    <iframe id="" title="Inline Frame Example" width="600" height="520" src="fig/idw_b.html"></iframe>                                     
+                </div>
+            </p>
+            <p style="text-align:justify">
+                <div class="figure div-mitad" style="text-align: center"><span id="fig:Map19b"></span>                    
+                    <p class="caption">a) IDW resultante para poligonos como entrada</p>
+                    <iframe id="inlineFrameExample" title="Inline Frame Example" width="600" height="520" src="map/idw_a2.html"></iframe>                                     
+                </div>
+                <div class="figure div-mitad" style="text-align: center"><span id="fig:Map19b"></span>
+                    <p class="caption">b) IDW resultante para puntos como entrada</p>
+                    <iframe id="inlineFrameExample" title="Inline Frame Example" width="600" height="520" src="map/idw_b2.html"></iframe>                                     
+                </div>
+            </p>            
+            <p class="caption">Mapa 19. Ponderación de distancia inversa para la incidencia del VIH/SIDA, 2012-2018</p>
+        </div>
+        <br/>
+
+        <footer class="site-footer">
+            <span class="site-footer-owner">Este sitio es mantenido por <a href="https://github.com/andresMontana" target="_blank">Andres Montaña</a>.</span>
+        </footer>
+
+    </section>
+
+
+    <!-- code folding -->
+
+
+    <!-- dynamically load mathjax for compatibility with self-contained -->
+    <script>
+    (function () {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+        document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+    </script>
+
+</body>
+</html>

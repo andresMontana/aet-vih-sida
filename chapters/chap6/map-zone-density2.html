@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="Luc Anselin" />
+
+
+<title>AET – Conteo de casos</title>
+
+<script src="files/header-attrs-2.3/header-attrs.js"></script>
+<link href="files/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="files/highlightjs-9.12.0/highlight.js"></script>
+    <title>GeoDa on Github</title>
+
+    <style>
+    	*{margin:0;padding:0;}
+	    .shadowfilter {
+	       -webkit-filter: drop-shadow(12px 12px 7px rgba(0,0,0,0.5));
+	        filter: url(shadow.svg#drop-shadow);
+	     }
+	     .intro1 { margin-left: -45px;}
+    </style>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="../../stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../../stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" href="../../stylesheets/simple-slideshow-styles.css">
+    <style>
+        ul {padding-left:30px;}
+        figcaption {
+        top: .70em;
+        left: .35em;
+        bottom: auto!important;
+        right: auto!important;
+        }
+    </style>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        h3.subtitle {
+            text-align: center;
+        }
+        h4.author {
+            text-align: center;
+            margin-top: 0px;
+        }
+        h4.date {
+            text-align: center;
+        }
+        p.caption {
+            font-size : 12px;
+        }
+    </style>
+    <style>
+        iframe {
+        border: 0px solid #eee;
+        width: 100%;
+        }
+        .output {
+            background: #eee;
+        }
+
+        .contenedor-mayor {
+            width: 100%;
+        }
+        .contenedor-toal {
+            position: center;
+        }
+        .div-mitad {
+            width: 50%;
+            float: left; 
+        }
+    </style>  
+
+<!-- Google Analytics -->
+<script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-72724100-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<!-- End Google Analytics -->
+<!-- Google Tag Manager -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-53RVF8"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-53RVF8');</script>
+<!-- End Google Tag Manager -->
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+  if (window.hljs) {
+    hljs.configure({languages: []});
+    hljs.initHighlightingOnLoad();
+    if (document.readyState && document.readyState === "complete") {
+      window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+    }
+  }
+</script>
+
+</head>
+
+<body>
+    <section class="page-header">
+        <h1 class="project-name">Análisis espacio temporal del VIH/SIDA</h1>
+        <h2 class="project-tagline">Capítulo VI</h2>
+        <!-- Botones -->
+        <a href="../../index.html" class="btn">Home</a>
+        <a href="../../cap5.html" class="btn">Capítulo V</a>
+        <a href="../../cap6.html" class="btn">Capítulo VI</a>
+        <a href="#" class="btn">Capítulo VII</a>
+        <a href="#" class="btn">Para público general</a>
+    </section>
+    
+    <section class="main-content">
+
+        <h1 class="title toc-ignore">Zonas de influencia y densidad espacial</h1>
+        <h4 class="author">Kernel density</h4>
+        <p></p>
+        <br/>
+        <div id="sankey" class="section level2 unnumbered contenedor-mayor" number="">
+            <h2>Kernel density</h2>
+            <p style="text-align:justify">
+                En este apartado se estima la densidad de los casos de VIH/SIDA mediante dos kernel o núcleos diferentes: Un kernel Gaussiano 
+                (<strong>bivnorm</strong>) y uno de Epanechnikov (<strong>epa</strong>). A su vez esto se realiza para los polígonos (en dicho caso el centroide de cada barrio 
+                es tomado para la estimación de la densidad) y para las distribuciones <em>a priori</em> asumidas en el <a href="map-zone-density1.html" target="_blank">apartado anterior</a> 
+                (uniforme y normal). 
+                El ancho de banda es auto determinado mediante el método <em>ad hoc</em> en cada caso. 
+                <span class="citation">(B. J. Worton <a href="#ref-Worton:89" role="doc-biblioref">1989</a>)</span>,
+                <span class="citation">(A. C. Davison et al <a href="#ref-Davison:95" role="doc-biblioref">1995</a>)</span>.   
+            </p>
+            <p style="text-align:justify">                
+                En el Mapa <a href="#fig:Map18a">18</a> se recogen los seis mapas resultantes de la combinación de las tres distribuciones 
+                de puntos con los dos kernel. En cada mapa se muestra el contorno que encierra el espacio donde se recoge el <span class="math line">\(75\%\)</span>, 
+                <span class="math line">\(50\%\)</span>, <span class="math line">\(25\%\)</span> y <span class="math line">\(10\%\)</span> de los casos. 
+                En azul se muestran los casos según las distribuciones de puntos asumidas. 
+            </p>           
+            <p style="text-align:justify">
+                <div class="figure div-mitad" style="text-align: center"><span id="fig:Map18a"></span>
+                    <p class="caption">bivnorm & centroide</p>
+                    <iframe id="inlineFrameExample" title="Inline Frame Example" width="600" height="520" src="map/densityMap1.html"></iframe>                                     
+                </div>
+                <div class="figure div-mitad" style="text-align: center"><span id="fig:Map17b"></span>
+                    <p class="caption">epa & centroide</p>
+                    <iframe id="" title="Inline Frame Example" width="600" height="520" src="map/densityMap2.html"></iframe>                                     
+                </div>
+            </p>
+            <p style="text-align:justify">
+                <div class="figure div-mitad" style="text-align: center"><span id="fig:Map17c"></span>
+                    <p class="caption">bivnorm & uniforme</p>
+                    <iframe id="inlineFrameExample" title="Inline Frame Example" width="600" height="520" src="map/densityMap3.html"></iframe>                                     
+                </div>
+                <div class="figure div-mitad" style="text-align: center"><span id="fig:Map17d"></span>
+                    <p class="caption">epa & uniforme</p>
+                    <iframe id="inlineFrameExample" title="Inline Frame Example" width="600" height="520" src="map/densityMap4.html"></iframe>                                     
+                </div>
+            </p>
+            <p style="text-align:justify">
+                <div class="figure div-mitad" style="text-align: center"><span id="fig:Map17c"></span>
+                    <p class="caption">bivnorm & normal</p>
+                    <iframe id="inlineFrameExample" title="Inline Frame Example" width="600" height="520" src="map/densityMap5.html"></iframe>                                     
+                </div>
+                <div class="figure div-mitad" style="text-align: center"><span id="fig:Map17d"></span>
+                    <p class="caption">epa & normal</p>
+                    <iframe id="inlineFrameExample" title="Inline Frame Example" width="600" height="520" src="map/densityMap6.html"></iframe>                                     
+                </div>
+            </p>
+            
+            <p class="caption">Mapa 16. Box Map comparativo para la tasa EB de la incidencia del VIH/SIDA, 2012-2018</p>
+        </div>
+        <br/>
+        <p style="text-align:justify">
+            En el Mapa <a href="#fig:Map18a">18</a> se ve que, para la primera columna de mapas, cuando el kernel es Gaussiano las 
+            curvas de densidad no presentan cambios tan variados como cuando el kernel es Epanechnikov además de contornos más suaves. 
+            Es notorio que, en general, los contornos que recogen el <span class="math line">\(25\%\)</span> y <span class="math line">\(10\%\)</span> 
+            de los casos se dividen en dos áreas espaciales separadas, una en la parte Sur-Oeste y la otra en la parte Sur-Este. 
+            De igual forma, para el <span class="math line">\(50\%\)</span> de los casos, el contorno se divide en 2 para un kernel Gaussiano 
+            y en 3 para el kernel Epanechnikov, exceptuando el caso de una distribución uniforme para el cual el <span class="math line">\(50\%\)</span> se recoge en 3 áreas 
+            diferentes. Cabe resaltar que, para este mismo rango de cobertura, hay un contorno pequeño ubicado en la parte Central-Oeste del 
+            mapa, que suele estar alejado del resto del contorno restante. Finalmente. El <span class="math line">\(75\%\)</span> de los casos conforman un área unida. 
+            Se hace evidente que la densidad de la prevalencia de VIH/SIDA, 2012-2018, muestra una mayor concentración en la parte sur de Barranquilla, 
+            donde el <span class="math line">\(10\%\)</span> de los casos genera solapamiento en los barrios <strong>La Sierrita</strong>, 
+            <strong>Kennedy</strong>, <strong>Las Américas</strong>, <strong>El santuario</strong> y <strong>Carrizal</strong> para la parte 
+            Sur-Oeste del mapa; y los barrios <strong>San Roque</strong>, <strong>Montes</strong>, <strong>Rebolo</strong>, <strong>Las Nieves</strong> y <strong>La Luz</strong>.
+        </p>
+        <p class="caption">Tabla 37. Porcentaje de cobertura espacial en la prevalencia de VIH/SIDA, 2012-2018</p>
+        <div class="contenedor-total" aling ="center">
+            <a style="text-align:center">
+                <iframe aling ="center" src="table/t37.html" class="" id="inlineFrameExample" title="Inline Frame Example" width="490" height="430"></iframe>
+            </a>
+        </div>
+        <br/>
+        <p style="text-align:justify">
+            En promedio, el <span class="math line">\(75\%\)</span> de los casos ocupa el <span class="math line">\(46\%\)</span> del 
+            área estudiada; el <span class="math line">\(50\%\)</span> de los casos abarca el <span class="math line">\(25\%\)</span> del mapa; 
+            el <span class="math line">\(25\%\)</span> se concentra en el <span class="math line">\(10\%\)</span> del área y el <span class="math line">\(10\%\)</span> 
+            de los casos ocupa tan solo el <span class="math line">\(4\%\)</span> del mapa. 
+            En la tabla 37 se recoge y amplía esta información para cada una de las distribuciones estimadas.      
+        </p>
+        <div id="references" class="section level2 unnumbered" number="">
+            <h2>Referencias</h2>
+            <div id="refs" class="references hanging-indent">
+                <div id="ref-Worton:89">
+                    <p>B. J. Worton, “<em>Kernel Methods for Estimating the Utilization Distribution in Home-Range Studies</em>" Author (s): B . J . Worton Published by: Ecological Society of America KERNEL METHODS FOR ESTIMATING THE UTILIZATION DISTRIBUTION IN HOME-RANGE STUDIES ’,” Ecology, vol. 70, no. 1, pp. 164–168, 1989.</p>
+                </div>
+                <div id="ref-Davison:95">
+                    <p>A. C. Davison, D. V. Hinkley, and B. J. Worton, “<em>Accurate and efficient construction of bootstrap likelihoods,</em>” Stat. Comput., vol. 5, no. 4, pp. 257–264, 1995.</p>
+                </div>
+            </div>
+        </div> 
+        <footer class="site-footer">
+            <span class="site-footer-owner">Este sitio es mantenido por <a href="https://github.com/andresMontana" target="_blank">Andres Montaña</a>.</span>
+        </footer>
+
+    </section>
+
+
+    <!-- code folding -->
+
+
+    <!-- dynamically load mathjax for compatibility with self-contained -->
+    <script>
+    (function () {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+        document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+    </script>
+
+</body>
+</html>

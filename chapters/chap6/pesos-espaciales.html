@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="Luc Anselin" />
+
+
+<title>AET – Conteo de casos</title>
+
+<script src="files/header-attrs-2.3/header-attrs.js"></script>
+<link href="files/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="files/highlightjs-9.12.0/highlight.js"></script>
+    <title>GeoDa on Github</title>
+
+    <style>
+    	*{margin:0;padding:0;}
+	    .shadowfilter {
+	       -webkit-filter: drop-shadow(12px 12px 7px rgba(0,0,0,0.5));
+	        filter: url(shadow.svg#drop-shadow);
+	     }
+	     .intro1 { margin-left: -45px;}
+    </style>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="../../stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../../stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" href="../../stylesheets/simple-slideshow-styles.css">
+    <style>
+        ul {padding-left:30px;}
+        figcaption {
+        top: .70em;
+        left: .35em;
+        bottom: auto!important;
+        right: auto!important;
+        }
+    </style>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        h3.subtitle {
+            text-align: center;
+        }
+        h4.author {
+            text-align: center;
+            margin-top: 0px;
+        }
+        h4.date {
+            text-align: center;
+        }
+        p.caption {
+            font-size : 12px;
+        }
+    </style>
+    <style>
+        iframe {
+        border: 0px solid #eee;
+        width: 100%;
+        }
+        .output {
+            background: #eee;
+        }
+
+        .contenedor-mayor {
+            width: 100%;
+        }
+        .contenedor-toal {
+            position: center;
+        }
+        .div-mitad {
+            width: 50%;
+            float: left; 
+        }
+    </style>  
+
+<!-- Google Analytics -->
+<script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-72724100-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<!-- End Google Analytics -->
+<!-- Google Tag Manager -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-53RVF8"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-53RVF8');</script>
+<!-- End Google Tag Manager -->
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+  if (window.hljs) {
+    hljs.configure({languages: []});
+    hljs.initHighlightingOnLoad();
+    if (document.readyState && document.readyState === "complete") {
+      window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+    }
+  }
+</script>
+
+</head>
+
+<body>
+    <section class="page-header">
+        <h1 class="project-name">Análisis espacio temporal del VIH/SIDA</h1>
+        <h2 class="project-tagline">Capítulo VI</h2>
+        <!-- Botones -->
+        <a href="../../index.html" class="btn">Home</a>
+        <a href="../../cap5.html" class="btn">Capítulo V</a>
+        <a href="../../cap6.html" class="btn">Capítulo VI</a>
+        <a href="#" class="btn">Capítulo VII</a>
+        <a href="#" class="btn">Para público general</a>
+    </section>
+    
+    <section class="main-content">
+
+        <h1 class="title toc-ignore">Pesos espaciales</h1>
+        <p></p>
+        <br/>
+        <div id="TOC">
+            <ul>
+                <li><a href="#peso-contiguidad">Pesos espaciales de contigüidad</a></li>
+                <li><a href="#peso-distancia">Peso espacial de banda de distancia o distancia de umbral</a></li>                
+            </ul>
+        </div>
+        <p><br></p>
+
+        <div id="peso-contiguidad" class="section level2 unnumbered contenedor-mayor" number="">
+            <h2>Pesos espaciales de contigüidad</h2>
+            <p style="text-align:justify">
+                En la Tabla <a href="#t40">40</a> se resumen las propiedades de los pesos espaciales seleccionados: contigüidad <em>reina</em> y <em>torre</em>. Se observa que el peso 
+                espacial tipo <em>reina</em> genera 1060 <em>links</em> mientras que el tipo torre 976, los que nos da <span class="math line">\(2,97\%\)</span> 
+                y <span class="math line">\(2,73\%\)</span> de <em>links</em>, respectivamente, del total<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> de links que se pueden conformar. 
+            </p>
+            <br/>
+            <p class="caption" id="t40">Tabla 40. Resumen propiedades pesos de contigüidad</p>
+            <div class="contenedor-total" aling ="center">
+                <a style="text-align:center">
+                    <iframe aling ="center" src="table/t40.html" class="" id="inlineFrameExample" title="Inline Frame Example" width="490" height="200"></iframe>
+                </a>
+            </div>
+
+            <p style="text-align:justify">                
+                <div class="figure div-mitad" style="text-align: center"><span id="fig:42a"></span>                    
+                    <p class="caption">a) Tipo Reina</p>
+                    <iframe id="inlineFrameExample" title="Inline Frame Example" width="600" height="520" src="map/conect_map_Q.html"></iframe>                                     
+                </div>
+                <div class="figure div-mitad" style="text-align: center"><span id="fig:42b"></span>
+                    <p class="caption">b) Tipo Torre</p>
+                    <iframe id="" title="Inline Frame Example" width="600" height="520" src="map/conect_map_R.html"></iframe>
+                </div>
+            </p>
+            <p>
+                <div class="figure" style="text-align: center"><span id="fig:42c"></span>
+                    <p class="caption">c) Dist. numero de vecinos</p>
+                    <iframe id="" title="Inline Frame Example" width="600" height="520" src="fig/dist_nb.html"></iframe>                    
+                </div>
+                <p class="caption">Figura 42. Mapas de conectividad y distribución de vecinos - pesos espaciales de contigüidad </p>
+            </p>
+            <p><br></p> 
+            <p style="text-align:justify">
+                En la Figura 42 <a href="#fig:42a">a)</a> y <a href="#fig:42b">b)</a> se muestran los mapas de conectividad, los cuales 
+                constan de los links que arroja cada tipo de contigüidad. En la Figura 42 <a href="#fig:42c">c)</a> se muestra la 
+                distribución del número de vecinos que tiene cada barrio según el tipo de peso espacial. Se observa que el tipo reina genera 
+                más vecinos y con frecuencias más altas que el tipo torre has los 5 vecinos. En promedio el tipo reina genera 5,6 vecinos 
+                por barrio y el tipo torre 5,1 vecinos por barrio. 
+            </p>
+        </div>
+        <br/>
+
+        <div id="peso-distancia" class="section level2 unnumbered contenedor-mayor" number="">
+            <h2>Peso espacial de banda de distancia o distancia de umbral</h2>
+            <p style="text-align:justify">
+                Para la creación de este tipo de peso espacial seleccionamos una distancia o umbral de 3 km, esto con base en los 
+                semivariogramas de la sección 6.4, los culés, como se mostró, parecen mostrar la formación de una meseta a partir de 
+                los 3 km, cabe destacar que la distancia mínima para detectar al menos un vecino en todos los barrios es de 3,032269 km, 
+                por lo que este peso espacial generará, como mínimo, un barrio sin vecinos. En la Tabla <a href="t41">41</a> se resumen 
+                las propiedades de este peso espacial. Vemos que el máximo de vecinos de un barrio es 77, se generan 8888 conexiones y 
+                se obtiene un <span class="math line">\(24,88\%\)</span> del total de links o conexiones posibles.
+            </p>
+
+            <p class="caption" id="t41">Tabla 41. Resumen propiedades pesos de umbral</p>
+            <div class="contenedor-total" aling ="center">
+                <a style="text-align:center">
+                    <iframe aling ="center" src="table/t41.html" class="" id="inlineFrameExample" title="Inline Frame Example" width="490" height="300"></iframe>
+                </a>
+            </div>
+            <p style="text-align:justify">
+                En la Figura <a href="#fig:43">43</a> se muestra el mapa de conectividad y la gráfica de distribución para el número de vecinos, 
+                vemos que la mayor frecuencia es 8 barrios con 41, 53, 68 y 71 vecinos.  
+            </p>
+
+
+
+            <p style="text-align:justify">                
+                <div class="figure div-mitad" style="text-align: center"><span id="fig:43"></span>                    
+                    <p class="caption">a) Tipo distanica - umbral = 3<em>km</em></p>
+                    <iframe id="inlineFrameExample" title="Inline Frame Example" width="600" height="500" src="map/conect_map_D3km.html"></iframe>                                     
+                </div>
+                <div class="figure div-mitad" style="text-align: center"><span id="fig:43"></span>
+                    <p class="caption">b) Dis. numero de vecinos</p>
+                    <iframe id="" title="Inline Frame Example" width="600" height="500" src="fig/dist_D3km.html"></iframe>
+                </div>
+            </p>
+            <p class="caption" id="t41">Figura 43. Mapas de conectividad y distribución de vecinos - peso espacial de distancia</p>
+            
+            <p style="text-align:justify">
+                puede dar click en es este <a href="fig/dist_D3km.html" target="_blank">link</a> para ver la figura 43 b) ampliada.
+            </p>
+
+        </div>
+        
+        <p>  
+        </p>
+       
+     
+        
+        <div class="footnotes">
+            <hr>
+                <ol>
+                    <li id="fn1">
+                        <p>
+                            <span class="math line">\(Total\ links =(N° barrios)^2\)</span>
+                            <a href="#fnref1" class="footnote-back">↩︎</a>
+                        </p>
+                    </li>
+                </ol>
+        </div>
+        <footer class="site-footer">
+            <span class="site-footer-owner">Este sitio es mantenido por <a href="https://github.com/andresMontana" target="_blank">Andres Montaña</a>.</span>
+        </footer>
+
+    </section>
+
+
+    <!-- code folding -->
+
+
+    <!-- dynamically load mathjax for compatibility with self-contained -->
+    <script>
+    (function () {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+        document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+    </script>
+
+</body>
+</html>
