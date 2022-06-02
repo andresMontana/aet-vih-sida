@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <meta name="author" content="Andres Montaña" />
-<title>I Moran Local – AET </title>
+<title>C Geary Local Biv – AET </title>
 
 <script src="files/header-attrs-2.3/header-attrs.js"></script>
 <link href="files/highlightjs-9.12.0/default.css" rel="stylesheet" />
@@ -120,49 +120,46 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
     <section class="main-content">
 
-        <h1 class="title toc-ignore">Autocorrelación espacial Local</h1>
+        <h1 class="title toc-ignore">Autocorrelación espacial bivariada local</h1>
         <p></p>
         <br/>
 
         <div id="lisa-moran" class="section level2 unnumbered contenedor-mayor" number="">
-            <h2>I de Moran Local</h2>
+            <h2>I de Moran bivariado local</h2>
             <p style="text-align:justify">
-                En el Mapa 21 <a href="#map:21a">a)</a> y <a href="#map:21a">b)</a> vemos el mapa LISA correspondiente para el 
-                <span class="math line">\(I\)</span> de Moran local de la variable de prevalencia del VIH/SIDA desde el 2012 hasta el 2018. 
-                Las leyendas definen los Clúster, en específico, la leyenda <strong><em>NS</em></strong> define aquellos polígonos para los 
-                cuales el <span class="math line">\(I\)</span> de Moran local no es significativo<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>  
-                mediante el método <strong>FDR</strong>.
+
+                En el mapa 25 <a href="#map:25a">a)</a> y <a href="#map:25b">b)</a> vemos el mapa LISA correspondiente para el C de Geary bivariado 
+                local de la variable de prevalencia del VIH/SIDA y los delitos sexuales durante el periodo de tiempo 2012-2018. Las leyendas definen 
+                los Clúster, en específico, la leyenda <strong>NS</strong> define aquellos polígonos para los cuales el 
+                estadístico no es significativo<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>  mediante el método <strong>FDR</strong>.
             </p>
             <p style="text-align:justify">
-                Vemos que se generan dos cluster Alto-Alto (Rojo fuerte) separados, el de la parte Suroeste contiene tres barrios los cuales son 
-                <strong>Santo Domingo de Guzmán</strong>, <strong>Carrizal</strong> y <strong>La Sierrita</strong>; más a la derecha de este se 
-                encuentra el segundo grupo que está conformado por los barrios <strong>San Roque</strong>, <strong>Rebolo</strong>, <strong>Montes</strong>, 
-                <strong>Las Nieves</strong> y <strong>La Luz</strong>. 
+                Se observa que para ambos casos solo se genera el cluster “<em>positivo</em>”, que para nuestro caso bidimensional deja una fácil 
+                interpretación <span class="citation">(L. Anselin <a href="#ref-Anselin:19" role="doc-biblioref">2019</a>)</span>  
+                la cual es: <strong>“<em>los casos de VIH/SIDA y los delitos sexuales, de manera individual, están por encima de la media en relación con sus vecinos</em>”</strong>. 
+                Esto quiere decir que existe una correlación espacial positiva entre las dos variables para aquellos barrios que son significativos 
             </p>
             <p style="text-align:justify">
-                Lo que da un total de 8 barrios cuya prevalencia de VIH es alta y la de sus vecinos también. Para el peso espacial tipo Torre, 
-                a excepción del barrio <strong>San Roque</strong>, el cluster Alto-Alto es igual.
+                Para el peso espacial tipo reina se clasifican cuatro barrios como <em>positivo</em>, estos son: <strong>Carrizal</strong>, 
+                <strong>Rebolo</strong>, <strong>Cevillar</strong> y <strong>Palmas del Rio</strong>. 
+                Mientras que para el peso tipo torre solo se detectaron dos barrios como significativos y estos fueron: <strong>Carrizal</strong> y <strong>Rebolo</strong>.                
             </p>
-            <p style="text-align:justify">
-                El cluster Bajo-Bajo solo se presenta para el peso especial tipo Reina y está conformado por 3 barrios de la zona norte que no 
-                comparten fronteras los cuales son: <strong>Palmas del Rio</strong>, <strong>Villa Carolina</strong> y <strong>San Salvador</strong>.
-            </p>
-            <p style="text-align:justify">
-                Los barrios atípicos son aquellos que pertenecen a los cluster Bajo-Alto (que no se generaron en ninguno de los mapas) y 
-                Alto-Bajo los cuales son solo 2 y son los mismos para ambos pesos espaciales, estos son: <strong>Los Ángeles I</strong> y 
-                <strong>Paraíso</strong>. Los cuales están también separados espacialmente. 
+            <p style="text-align:justify">   
+                Los barrios atípicos son aquellos que pertenecen a los cluster Alto-Bajo (los cuales no se generaron en ninguno de los mapas) y 
+                Bajo-Alto los cuales son solo 2 y son los mismos para ambos pesos espaciales, estos son: <strong>El Rosario</strong> y 
+                <strong>Las Cayenas</strong>. Los cuales están también separados espacialmente.
             </p>
             <p style="text-align:justify">                
-                <div class="figure div-mitad" style="text-align: center"><span id="map:21a"></span>                    
-                    <p class="caption">a) LISA - Prevalencia VIH/SIDA - W Reina</p>
+                <div class="figure div-mitad" style="text-align: center"><span id="map:24a"></span>                    
+                    <p class="caption">a) LISA bivariado - Prevalencia VIH/SIDA - W Reina</p>
                     <iframe id="inlineFrameExample" title="Inline Frame Example" width="600" height="520" src="map/I_lisa_Q.html"></iframe>                                     
                 </div>
-                <div class="figure div-mitad" style="text-align: center"><span id="map:21b"></span>
-                    <p class="caption">b) LISA - Prevalencia VIH/SIDA - W Torre</p>
+                <div class="figure div-mitad" style="text-align: center"><span id="map:24b"></span>
+                    <p class="caption">b) LISA bivariado - Prevalencia VIH/SIDA - W Torre</p>
                     <iframe id="" title="Inline Frame Example" width="600" height="520" src="map/I_lisa_R.html"></iframe>
                 </div>
             </p>
-            <p class="caption">Mapa 21. LISA para el I de Moran</p>
+            <p class="caption">Mapa 24. LISA para el I de Moran bivariado</p>
             
             <p style="text-align:justify">
             </p>
@@ -172,14 +169,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <p>  
         </p>
        
-     
+        <div id="references" class="section level2 unnumbered" number="">
+            <h2>Referencias</h2>
+            <div id="refs" class="references hanging-indent">
+                <div id="ref-Anselin:19">
+                    <p>L. Anselin,, “<em>A Local Indicator of Multivariate Spatial Association: Extending Geary’s c,</em>" Geogr. Anal., vol. 51, no. 2, pp. 133–150, 2019</p>
+                </div>
+            </div>
+        </div> 
         
         <div class="footnotes">
             <hr>
                 <ol>
                     <li id="fn1">
                         <p>
-                            <span class="math line">Pseudo \(P\ valores ≥ 0.00236\)</span>
+                            <span class="math line">Pseudo \(P\ valores ≥ 0.001233\) para el peso reina  y Pseudo \(P\ valores ≥ 0.000627\) peso roca</span>
                             <a href="#fnref1" class="footnote-back">↩︎</a>
                         </p>
                     </li>
